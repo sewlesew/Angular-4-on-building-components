@@ -1,0 +1,10 @@
+
+
+<span>componentCounterValue</span> <input type="text" [(ngModel)]="componentCounterValue" > <br>
+<!--<p>{{componentCounterValue}}</p>-->
+<app-counter [counter]="componentCounterValue" (counterChange)='output=$event'></app-counter>
+<p>Emit : {{output}}</p>
+
+
+
+
