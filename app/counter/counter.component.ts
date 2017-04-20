@@ -10,20 +10,15 @@ import { Component, OnInit, Input, Output, EventEmitter,ViewEncapsulation } from
  encapsulation: ViewEncapsulation.Native
 })
 export class CounterComponent implements OnInit { 
- @Input() counter:number;
+ @Input('counter') counterValue:number;
  @Output() counterChange;
- public counterValue:number;
 
   constructor() {
   this.counterChange=new EventEmitter();
-  this.counterValue=0;
-   }
+    }
 
   ngOnInit() {
-    if(this.counter){
-   this.counterValue=this.counter;
-   this.counterChange.emit(this.counterValue);
-     }     
+     
     }
 
     counterset(){
@@ -31,17 +26,17 @@ export class CounterComponent implements OnInit {
     }
 
 ngOnChanges(){
-   this.counterValue=this.counter;
+  //to emit as soon as there is a change in the input to this componet. Angular detects automatically that
    this.counterChange.emit(this.counterValue);
 }
     
   increment(){      
-   this.counter=this.counterValue++;
+  this.counterValue++;
     this.counterset();
   }
 
   decrement(){
-    this.counter=this.counterValue--;
+    this.counterValue--;
     this.counterset();
   } 
 
